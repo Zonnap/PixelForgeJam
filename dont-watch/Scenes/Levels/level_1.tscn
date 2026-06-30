@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvbj8ys5oxcsf"]
+
+[ext_resource type="Texture2D" uid="uid://cyl0ooptytg47" path="res://icon.svg" id="1_4dpyx"]
+[ext_resource type="Script" uid="uid://bsf2l8gmug1dy" path="res://Scripts/Player/player.gd" id="1_tlcug"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_seteq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tlcug"]
+sky_material = SubResource("ProceduralSkyMaterial_seteq")
+
+[sub_resource type="Environment" id="Environment_4dpyx"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_tlcug")
+tonemap_mode = 2
+
+[node name="Level_1" type="Node3D"]
+metadata/_edit_lock_ = true
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_4dpyx")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.215271, -2)
+size = Vector3(1.915, 0.569, 9)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.893235, 1.2747928, -2.0025496)
+size = Vector3(0.12937498, 2.4326172, 9)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0100803, 1.273717, -2)
+size = Vector3(0.12937498, 2.4326172, 9)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8928125, 1.273717, -10.105469)
+size = Vector3(0.12937498, 2.4326172, 3.2109375)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7163522, 1.273717, -11.776075)
+size = Vector3(0.12937498, 2.4326172, 0.42640686)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.057885587, 2.2110338, -11.776075)
+size = Vector3(0.12937498, 0.5579834, 1.1255121)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.7734715, 1.273717, -11.776075)
+size = Vector3(0.12937498, 2.4326172, 0.32618904)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.040200792, 1.273717, 2.4239247)
+size = Vector3(0.12937498, 2.4326172, 1.9395142)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5011744, 1.273717, -7.476075)
+size = Vector3(0.12937498, 2.4326172, 2.0567627)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4988256, 1.273717, -7.476075)
+size = Vector3(0.12937498, 2.4326172, 2.0567627)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98376393, 1.273717, -10.143555)
+size = Vector3(0.12937498, 2.4326172, 3.2871094)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.7421362, 1.273717, -8.445533)
+size = Vector3(0.12937498, 2.4326172, 3.5565186)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.7806647, 1.273717, -6.444929)
+size = Vector3(0.12937498, 2.4326172, 3.4794617)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.6816587, 1.273717, -8.445533)
+size = Vector3(0.12937498, 2.4326172, 3.6254272)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.6854768, 1.273717, -6.4449286)
+size = Vector3(0.12937498, 2.4326172, 3.6354828)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.215271, -10.052112)
+size = Vector3(1.915, 0.569, 3.3256836)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.9725935e-08, -0.215271, -7.451277)
+size = Vector3(1.915, 0.569, 9)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5412984, -2)
+size = Vector3(1.915, 0.13069141, 9)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5488667, -10.052112)
+size = Vector3(1.915, 0.14582813, 3.3256836)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.9725935e-08, 2.5520406, -7.451277)
+size = Vector3(1.915, 0.15217578, 9)
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="Monster" type="Node3D" parent="Entities"]
+
+[node name="SpriteFarCenter" type="Sprite3D" parent="Entities/Monster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2624124, -12.087645)
+visible = false
+shaded = true
+texture = ExtResource("1_4dpyx")
+
+[node name="SpriteFarLeft" type="Sprite3D" parent="Entities/Monster"]
+transform = Transform3D(0.80845237, 0.5885616, 0, -0.5885616, 0.80845237, 0, 0, 0, 1, -0.20690413, 0.2354551, -12.1184845)
+visible = false
+shaded = true
+texture = ExtResource("1_4dpyx")
+
+[node name="SpriteCenter" type="Sprite3D" parent="Entities/Monster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2624124, -7.6497583)
+visible = false
+shaded = true
+texture = ExtResource("1_4dpyx")
+
+[node name="SpriteCenterLeft" type="Sprite3D" parent="Entities/Monster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0125084, 0.63261163, -6.704126)
+visible = false
+shaded = true
+texture = ExtResource("1_4dpyx")
+
+[node name="SpriteCenterRight" type="Sprite3D" parent="Entities/Monster"]
+transform = Transform3D(0.7317226, -0.68160254, 0, 0.68160254, 0.7317226, 0, 0, 0, 1, 0.78143936, 0.40208018, -6.703666)
+shaded = true
+texture = ExtResource("1_4dpyx")
+
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05496323, 0.8728328, -3.1481893)
+script = ExtResource("1_tlcug")
+lantern = NodePath("Camera3D/LanternLight")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+
+[node name="PlayerGlow" type="OmniLight3D" parent="Player/Camera3D"]
+light_color = Color(0.32039052, 0.7508524, 0.68581605, 1)
+light_energy = 0.068
+omni_range = 2.311
+
+[node name="LanternLight" type="SpotLight3D" parent="Player/Camera3D"]
+light_color = Color(0.9614472, 0.8557247, 0.5890727, 1)
+spot_range = 10.342
+spot_angle = 58.98
