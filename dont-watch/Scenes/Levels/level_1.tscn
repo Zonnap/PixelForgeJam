@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cvbj8ys5oxcsf"]
+[gd_scene load_steps=34 format=3 uid="uid://cvbj8ys5oxcsf"]
 
 [ext_resource type="Texture2D" uid="uid://cyl0ooptytg47" path="res://icon.svg" id="1_4dpyx"]
 [ext_resource type="PackedScene" uid="uid://okqkdrp5m4ic" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_01.gltf" id="1_5f3p6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b1gve1ocaprid" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_03.gltf" id="2_jv26f"]
 [ext_resource type="PackedScene" uid="uid://bmwkjdptnx0js" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_02.gltf" id="3_rb0md"]
 [ext_resource type="ArrayMesh" uid="uid://biv0k5dy8tp51" path="res://Assets/Torch/000_torch.obj" id="4_7r2dd"]
+[ext_resource type="Script" uid="uid://m236ecy3d6u3" path="res://Scripts/level/torch.gd" id="4_fayjm"]
 [ext_resource type="Shader" uid="uid://blm6sxjbvt02q" path="res://Shaders/mi_shader_ps1.gdshader" id="4_iixi8"]
 [ext_resource type="Texture2D" uid="uid://d2woxk05mrhw8" path="res://Assets/Torch/000_torch_tex.png" id="5_k2mw1"]
 [ext_resource type="PackedScene" uid="uid://bqrc82rlke385" path="res://Assets/Dungeon Assets/Modular Dungeon/Floor/Stone/Dark/floor_stone_dark_01.gltf" id="5_rb0md"]
@@ -152,6 +153,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118861794, 0, -15.894678)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110497475, 0, -11.901643)
 
 [node name="Torch" type="Node" parent="Level"]
+script = ExtResource("4_fayjm")
 
 [node name="000Torch" type="MeshInstance3D" parent="Level/Torch"]
 transform = Transform3D(-0.1, 0, 6.278333e-08, 0, 0.1, 0, -6.278333e-08, 0, -0.1, 1.1186185, 2.0802245, -14.604873)
@@ -230,6 +232,9 @@ amount = 500
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_nojx8")
 draw_pass_1 = SubResource("QuadMesh_ad63i")
+
+[node name="Timer" type="Timer" parent="Level/Torch"]
+autostart = true
 
 [node name="Walls" type="Node" parent="Level"]
 
@@ -337,7 +342,7 @@ transform = Transform3D(1.3113421e-07, 0, 1.0000006, 0, 1, 0, -1.0000006, 0, 1.3
 [node name="Monster" type="Node3D" parent="Entities"]
 
 [node name="SpriteFarCenter" type="Sprite3D" parent="Entities/Monster"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.012174666, 0.6394261, -12.087645)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.012174666, 1.1858977, -12.087645)
 shaded = true
 texture = ExtResource("2_3mqfk")
 
@@ -414,4 +419,5 @@ script = ExtResource("19_7hll7")
 [node name="Timer" type="Timer" parent="Audio/Random Noises"]
 autostart = true
 
+[connection signal="timeout" from="Level/Torch/Timer" to="Level/Torch" method="_on_timer_timeout"]
 [connection signal="timeout" from="Audio/Random Noises/Timer" to="Audio/Random Noises" method="_on_timer_timeout"]
