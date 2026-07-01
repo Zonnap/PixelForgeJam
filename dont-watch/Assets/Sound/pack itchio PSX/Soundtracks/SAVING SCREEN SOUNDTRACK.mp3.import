@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cuua3ypf2ppq7"
+path="res://.godot/imported/SAVING SCREEN SOUNDTRACK.mp3-2fcf8fe62f799c002dca1b4f0636823f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/pack itchio PSX/Soundtracks/SAVING SCREEN SOUNDTRACK.mp3"
+dest_files=["res://.godot/imported/SAVING SCREEN SOUNDTRACK.mp3-2fcf8fe62f799c002dca1b4f0636823f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

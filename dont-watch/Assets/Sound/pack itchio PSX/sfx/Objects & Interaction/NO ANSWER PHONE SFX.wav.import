@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cfqnancfb1xgm"
+path="res://.godot/imported/NO ANSWER PHONE SFX.wav-1308314f619c565e1bd7f0f1ac5cb758.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/pack itchio PSX/sfx/Objects & Interaction/NO ANSWER PHONE SFX.wav"
+dest_files=["res://.godot/imported/NO ANSWER PHONE SFX.wav-1308314f619c565e1bd7f0f1ac5cb758.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

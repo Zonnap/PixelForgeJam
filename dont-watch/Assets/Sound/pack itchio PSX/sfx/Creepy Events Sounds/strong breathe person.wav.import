@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy2ojiu8ppf7j"
+path="res://.godot/imported/strong breathe person.wav-07b71a019a5a00e8c62bfb2a4b82c63d.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/strong breathe person.wav"
+dest_files=["res://.godot/imported/strong breathe person.wav-07b71a019a5a00e8c62bfb2a4b82c63d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

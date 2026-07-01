@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4niighgnq3tf"
+path="res://.godot/imported/OPEN MENU.wav-9a7bb23c434326b5a7c631b51da82497.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/pack itchio PSX/sfx/UI retro PSX/OPEN MENU.wav"
+dest_files=["res://.godot/imported/OPEN MENU.wav-9a7bb23c434326b5a7c631b51da82497.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
