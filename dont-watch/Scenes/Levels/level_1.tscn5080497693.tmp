@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cvbj8ys5oxcsf"]
+[gd_scene load_steps=32 format=3 uid="uid://cvbj8ys5oxcsf"]
 
 [ext_resource type="PackedScene" uid="uid://okqkdrp5m4ic" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_01.gltf" id="1_5f3p6"]
-[ext_resource type="Script" uid="uid://bvh36lscptwyu" path="res://Scripts/level/level_1.gd" id="1_31phq"]
+[ext_resource type="Script" path="res://Scripts/level/level_1.gd" id="1_31phq"]
+[ext_resource type="Texture2D" uid="uid://dm8tj3ychiar4" path="res://Assets/Monster Assets/scarymobs/cosmic_horror_dude.png" id="2_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://b1gve1ocaprid" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_03.gltf" id="2_jv26f"]
 [ext_resource type="PackedScene" uid="uid://bmwkjdptnx0js" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_02.gltf" id="3_rb0md"]
 [ext_resource type="ArrayMesh" uid="uid://biv0k5dy8tp51" path="res://Assets/Torch/000_torch.obj" id="4_7r2dd"]
@@ -11,9 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cwk6mbn0uircv" path="res://addons/kenney_particle_pack/fire_01.png" id="6_tjl6l"]
 [ext_resource type="PackedScene" uid="uid://drk7qkqhtv63o" path="res://Assets/Dungeon Assets/Modular Dungeon/Floor/Grate/floor_grate_01.gltf" id="8_jv26f"]
 [ext_resource type="AudioStream" uid="uid://ctch1aos8e40q" path="res://Assets/Sound/pack itchio PSX/Soundtracks/Ambience/AMBIENCE WHITE NOISE.wav" id="10_u5ghp"]
-[ext_resource type="PackedScene" uid="uid://dkjgd2he833bw" path="res://Scenes/Monster/monster.tscn" id="11_31phq"]
+[ext_resource type="Script" uid="uid://b8xy6uygixms5" path="res://Scripts/Monster/monster.gd" id="11_fayjm"]
 [ext_resource type="PackedScene" uid="uid://cumnbsd5esoc8" path="res://Scenes/Player/player.tscn" id="13_7hll7"]
 [ext_resource type="AudioStream" uid="uid://dy2ojiu8ppf7j" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/strong breathe person.wav" id="15_7hll7"]
+[ext_resource type="AudioStream" uid="uid://bl8yv186p2vm1" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/blood slpash 1.wav" id="16_fayjm"]
 [ext_resource type="AudioStream" uid="uid://qwucpsrh2xyb" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 3.wav" id="17_nojx8"]
 [ext_resource type="AudioStream" uid="uid://3njgypsxm2dv" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 4.wav" id="18_vvknj"]
 [ext_resource type="Script" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
@@ -81,19 +83,15 @@ size = Vector2(0.3, 0.3)
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ad63i"]
 resource_local_to_scene = true
 random_volume_offset_db = 1.1
-streams_count = 3
+streams_count = 4
 stream_0/stream = ExtResource("15_7hll7")
-stream_1/stream = ExtResource("17_nojx8")
-stream_2/stream = ExtResource("18_vvknj")
+stream_1/stream = ExtResource("16_fayjm")
+stream_2/stream = ExtResource("17_nojx8")
+stream_3/stream = ExtResource("18_vvknj")
 
 [node name="Level_1" type="Node3D"]
 script = ExtResource("1_31phq")
 metadata/_edit_lock_ = true
-
-[node name="HuntTimer" type="Timer" parent="."]
-wait_time = 3.0
-
-[node name="VanishTimer" type="Timer" parent="."]
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -352,24 +350,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01032114, 0.022649407, 5.9
 [node name="wall_2x3_033" parent="Level/Walls/wall_2x3_012/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013" instance=ExtResource("2_jv26f")]
 transform = Transform3D(1.3113421e-07, 0, 1.0000006, 0, 1, 0, -1.0000006, 0, 1.3113421e-07, -1.2852108, -0.04432106, 6.68361)
 
-[node name="Monster" type="Node" parent="."]
+[node name="Entities" type="Node" parent="."]
 
-[node name="Monster" parent="Monster" instance=ExtResource("11_31phq")]
+[node name="Monster" type="Node3D" parent="Entities"]
+script = ExtResource("11_fayjm")
 
-[node name="PosPointBack" type="Marker3D" parent="Monster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.393306)
-
-[node name="PosPointCenter" type="Marker3D" parent="Monster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.6618376)
-
-[node name="PosPointLeft" type="Marker3D" parent="Monster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9343174, 0, -7.6618376)
-
-[node name="PosPointRight" type="Marker3D" parent="Monster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0660999, 0, -7.6618376)
-
-[node name="PosPointFront" type="Marker3D" parent="Monster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.3836017)
+[node name="SpriteCenter" type="Sprite3D" parent="Entities/Monster"]
+transform = Transform3D(1.6226052, 0, 0, 0, 1.6226052, 0, 0, 0, 1, 0, 1.1890723, -7.6497583)
+shaded = true
+texture = ExtResource("2_3mqfk")
 
 [node name="Player" parent="." instance=ExtResource("13_7hll7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05496323, 0.8728328, -3.1481893)
@@ -402,7 +391,5 @@ offset_right = 615.0
 offset_bottom = 578.0
 value = 100.0
 
-[connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]
-[connection signal="timeout" from="VanishTimer" to="." method="_on_vanish_timer_timeout"]
 [connection signal="timeout" from="Level/Torch/Timer" to="Level/Torch" method="_on_timer_timeout"]
 [connection signal="timeout" from="Audio/Random Noises/Timer" to="Audio/Random Noises" method="_on_timer_timeout"]

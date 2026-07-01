@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cumnbsd5esoc8"]
+
+[ext_resource type="Script" uid="uid://bsf2l8gmug1dy" path="res://Scripts/Player/player.gd" id="1_a3d8c"]
+[ext_resource type="Shader" uid="uid://blm6sxjbvt02q" path="res://Shaders/mi_shader_ps1.gdshader" id="2_xpcdj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iixi8"]
+shader = ExtResource("2_xpcdj")
+shader_parameter/use_dithering = true
+shader_parameter/dithering_intensity = 0.3
+shader_parameter/use_scanlines = true
+shader_parameter/scanlines_opacity = 0.44
+shader_parameter/use_chromatic_aberration = false
+shader_parameter/aberration_amount = 0.0
+shader_parameter/use_vhs_noise = false
+shader_parameter/noise_intensity = 0.0
+shader_parameter/use_color_quantization = true
+shader_parameter/color_levels = 0.6
+shader_parameter/use_pixelate = true
+shader_parameter/pixel_size = 0.29
+shader_parameter/use_crt = true
+shader_parameter/crt_amount = 0.3
+
+[node name="Player" type="Node3D" node_paths=PackedStringArray("lantern")]
+script = ExtResource("1_a3d8c")
+lantern = NodePath("Camera3D/LanternLight")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51289797, 0)
+
+[node name="PlayerGlow" type="OmniLight3D" parent="Camera3D"]
+light_color = Color(0.32039052, 0.7508524, 0.68581605, 1)
+light_energy = 0.068
+omni_range = 2.311
+
+[node name="LanternLight" type="SpotLight3D" parent="Camera3D"]
+light_color = Color(0.9614472, 0.8557247, 0.5890727, 1)
+spot_range = 10.342
+spot_angle = 58.98
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_iixi8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
