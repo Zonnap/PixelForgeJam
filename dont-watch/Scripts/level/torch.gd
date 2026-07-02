@@ -1,7 +1,7 @@
 extends Node
 
 @onready var timer: Timer = $Timer
-
+@onready var Audio = $Heartbeat
 # Define the minimum and maximum wait times in seconds
 @export var wait_time: float = 1
 
@@ -18,12 +18,10 @@ var TorchCounter: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TorchHolder = [Torch1, Torch2, Torch3, Torch4, Torch5, Torch6]
+	Audio.volume_db = 0
+	Audio.play()
 	# Start the random cycle when the scene begins
 	start_random_timer()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_timer_timeout() -> void:
 		# 2. Pick a new random time and start the timer again
@@ -31,6 +29,7 @@ func _on_timer_timeout() -> void:
 		var OffTorch = TorchHolder[TorchCounter]
 		OffTorch.visible = false
 		TorchCounter += 1
+		Audio.volume_db += 3
 		start_random_timer()
 	if TorchCounter > TorchHolder.size():
 		print("Game Complete")

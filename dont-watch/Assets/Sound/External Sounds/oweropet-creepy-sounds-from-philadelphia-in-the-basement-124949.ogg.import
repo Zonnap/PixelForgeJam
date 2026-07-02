@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dex5s7euquh6b"
+path="res://.godot/imported/oweropet-creepy-sounds-from-philadelphia-in-the-basement-124949.ogg-efa22a67d8d5e14853d5895a7112df8f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound/External Sounds/oweropet-creepy-sounds-from-philadelphia-in-the-basement-124949.ogg"
+dest_files=["res://.godot/imported/oweropet-creepy-sounds-from-philadelphia-in-the-basement-124949.ogg-efa22a67d8d5e14853d5895a7112df8f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

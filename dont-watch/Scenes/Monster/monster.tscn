@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkjgd2he833bw"]
+[gd_scene load_steps=9 format=3 uid="uid://dkjgd2he833bw"]
 
 [ext_resource type="Script" uid="uid://b8xy6uygixms5" path="res://Scripts/Monster/monster.gd" id="1_s58ey"]
 [ext_resource type="Texture2D" uid="uid://dm8tj3ychiar4" path="res://Assets/Monster Assets/scarymobs/cosmic_horror_dude.png" id="2_67fv7"]
+[ext_resource type="Texture2D" uid="uid://caob2u0sr43r" path="res://Assets/Monster Assets/scarymobs/cosmic_horror_dude_damaged.png" id="3_vd1hn"]
+[ext_resource type="AudioStream" uid="uid://dex5s7euquh6b" path="res://Assets/Sound/External Sounds/oweropet-creepy-sounds-from-philadelphia-in-the-basement-124949.ogg" id="4_vd1hn"]
 
 [sub_resource type="Animation" id="Animation_s58ey"]
 resource_name = "Hover"
@@ -76,10 +78,29 @@ tracks/2/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DamagedSprite")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 1.2499593, 0)
+
+[sub_resource type="Animation" id="Animation_vd1hn"]
+resource_name = "Hover_Damaged"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamagedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.2499593, 0, 0.1, 1, -0.1, 1.25, 0, 0.2, 1, 0, 1.25, 0, 0.3, 1, 0.1, 1, 0, 0.4, 1, 0, 1.25, 0, 0.5, 1, -0.1, 1.25, 0, 0.6, 1, 0, 1.25, 0, 0.7, 1, 0.1, 1, 0, 0.8, 1, 0, 1.25, 0, 0.9, 1, -0.1, 1.25, 0, 1, 1, 0, 1.2499593, 0, 1.1, 1, -0.1, 1.25, 0, 1.2, 1, -0.1, 1.25, 0, 1.3, 1, -0.1, 1.25, 0, 1.4, 1, -0.1, 1.25, 0, 1.5, 1, 0.1, 1.25, 0, 1.6, 1, -0.1, 1.25, 0, 1.7, 1, -0.1, 1.25, 0, 1.8, 1, -0.1, 1.25, 0, 1.9, 1, -0.1, 1.25, 0, 2, 1, 0, 1.2499593, 0, 2.1, 1, -0.1, 1.25, 0, 2.2, 1, -0.1, 1.25, 0, 2.3, 1, -0.1, 1.25, 0, 2.4, 1, -0.1, 1.25, 0, 2.5, 1, -0.1, 1.25, 0, 2.6, 1, -0.1, 1.25, 0, 2.7, 1, -0.1, 1.25, 0, 2.8, 1, -0.1, 1.25, 0, 2.9, 1, -0.1, 1.25, 0, 3.0333333, 1, 0, 1.2499593, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vd1hn"]
 _data = {
 &"Hover": SubResource("Animation_s58ey"),
+&"Hover_Damaged": SubResource("Animation_vd1hn"),
 &"RESET": SubResource("Animation_67fv7")
 }
 
@@ -87,6 +108,7 @@ _data = {
 script = ExtResource("1_s58ey")
 
 [node name="SpriteCenter" type="Sprite3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1.6226052, 0, 0, 0, 1.6226052, 0, 0, 0, 1, 0, 1.1739951, 0)
 shaded = true
 texture = ExtResource("2_67fv7")
@@ -96,3 +118,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_vd1hn")
 }
 autoplay = "Hover"
+
+[node name="DamagedSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1.623, 0, 0, 0, 1.623, 0, 0, 0, 0.616, 0, 1.2499593, 0)
+shaded = true
+texture = ExtResource("3_vd1hn")
+
+[node name="Scream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_vd1hn")
+volume_db = 13.389
+max_db = 6.0
+max_distance = 16.75
+emission_angle_enabled = true
+emission_angle_degrees = 36.0
+
+[node name="Timer" type="Timer" parent="Scream"]
+wait_time = 4.0
+
+[connection signal="timeout" from="Scream/Timer" to="." method="_on_timer_timeout"]

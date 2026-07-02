@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cyaagrss0rmd5"
+path="res://.godot/imported/2019-03-30_18-13-20.mp3-6a675884aa7c69a6f417214e55481b2a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/External Sounds/2019-03-30_18-13-20.mp3"
+dest_files=["res://.godot/imported/2019-03-30_18-13-20.mp3-6a675884aa7c69a6f417214e55481b2a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

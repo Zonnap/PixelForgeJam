@@ -15,6 +15,9 @@ var max_hunt_interval = 6.0
 
 var pos_points: Array [Marker3D] = []
 
+#Signal Processing
+signal MonsterDamage()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pos_points = [pos_point_back, pos_point_center, pos_point_left, pos_point_right]
@@ -29,7 +32,6 @@ func _process(delta: float) -> void:
 		hunt_timer.stop()
 		if vanish_timer.is_stopped():
 			vanish_timer.start()
-			
 		
 func _on_hunt_timer_timeout() -> void:
 	var pos_select = pos_points.pick_random().global_position
@@ -38,3 +40,8 @@ func _on_hunt_timer_timeout() -> void:
 
 func _on_vanish_timer_timeout() -> void:
 	monster.visible = false
+
+
+func _on_player_holy_light() -> void:
+	if monster.visible == true:
+		emit_signal("MonsterDamage")
