@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cvbj8ys5oxcsf"]
+[gd_scene load_steps=41 format=3 uid="uid://cvbj8ys5oxcsf"]
 
 [ext_resource type="PackedScene" uid="uid://okqkdrp5m4ic" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_01.gltf" id="1_5f3p6"]
 [ext_resource type="Script" uid="uid://bvh36lscptwyu" path="res://Scripts/level/level_1.gd" id="1_31phq"]
@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://qwucpsrh2xyb" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 3.wav" id="17_nojx8"]
 [ext_resource type="AudioStream" uid="uid://casntk48bja2p" path="res://Assets/Sound/External Sounds/freesound_community-creepy-vocal-ambience-6074.mp3" id="18_7hll7"]
 [ext_resource type="AudioStream" uid="uid://3njgypsxm2dv" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 4.wav" id="18_vvknj"]
-[ext_resource type="Script" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
+[ext_resource type="Script" uid="uid://m73qa0clbmdb" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_seteq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,6 +32,12 @@ background_mode = 2
 background_energy_multiplier = 0.0
 sky = SubResource("Sky_tlcug")
 tonemap_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_7hll7"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fayjm"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3628d"]
 albedo_texture = ExtResource("5_k2mw1")
@@ -104,21 +110,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, -16.398762), Vector3(0, 0, -0.66)]
 }
 
-[sub_resource type="Animation" id="Animation_fayjm"]
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Monster/Monster:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(8.160175, 0, -7.6616144), Vector3(0.56227016, 0, -7.6616144), Vector3(0.07273698, 0, -3.6571255)]
-}
-
 [sub_resource type="Animation" id="Animation_nojx8"]
 length = 5.0
 tracks/0/type = "value"
@@ -134,11 +125,62 @@ tracks/0/keys = {
 "values": [Vector3(-8.052586, 0, -7.6616144), Vector3(-0.5323796, 0, -7.6616144), Vector3(-0.0063476563, 0, -3.8929622)]
 }
 
+[sub_resource type="Animation" id="Animation_fayjm"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monster/Monster:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(8.160175, 0, -7.6616144), Vector3(0.56227016, 0, -7.6616144), Vector3(0.07273698, 0, -3.6571255)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vvknj"]
 _data = {
 &"center_path": SubResource("Animation_7hll7"),
 &"left_path": SubResource("Animation_nojx8"),
 &"right_path": SubResource("Animation_fayjm")
+}
+
+[sub_resource type="Animation" id="Animation_vvknj"]
+resource_name = "Wall Lift"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level/Walls/wall_2x3_012/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_033:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.23, 0, 6.724), Vector3(-1.25, 0.25, 6.724), Vector3(-1.23, 0.5, 6.724), Vector3(-1.25, 1, 6.724), Vector3(-1.23, 1.2, 6.724), Vector3(-1.221, 1.75, 6.724), Vector3(-1.221, 2, 6.724), Vector3(-1.221, 2.25, 6.724), Vector3(-1.221, 2.5, 6.724), Vector3(-1.221, 2.75, 6.724), Vector3(-1.221, 3, 6.724)]
+}
+
+[sub_resource type="Animation" id="Animation_ad63i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level/Walls/wall_2x3_012/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_033:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2206637, 0.05224657, 6.724452)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmbdk"]
+_data = {
+&"RESET": SubResource("Animation_ad63i"),
+&"Wall Lift": SubResource("Animation_vvknj")
 }
 
 [node name="Level_1" type="Node3D"]
@@ -150,11 +192,17 @@ wait_time = 3.0
 one_shot = true
 
 [node name="VanishTimer" type="Timer" parent="."]
+wait_time = 0.25
 
 [node name="Lighting" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
 environment = SubResource("Environment_4dpyx")
+
+[node name="SpotLight3D" type="MeshInstance3D" parent="Lighting"]
+transform = Transform3D(2.9999819, -0.010471955, 0, 0.010471955, 2.9999819, 0, 0, 0, 3, 0, 1.6431272, -17.72171)
+mesh = SubResource("QuadMesh_7hll7")
+surface_material_override/0 = SubResource("ORMMaterial3D_fayjm")
 
 [node name="Level" type="Node" parent="."]
 
@@ -194,7 +242,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110497475, 0, -11.901643)
 
 [node name="Torch" type="Node" parent="Level"]
 script = ExtResource("4_fayjm")
-wait_time = 30.0
 
 [node name="000Torch" type="MeshInstance3D" parent="Level/Torch"]
 transform = Transform3D(-0.1, 0, 6.278333e-08, 0, 0.1, 0, -6.278333e-08, 0, -0.1, 1.1186185, 2.0802245, -14.604873)
@@ -410,7 +457,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00038146973, 0.022649407, 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01032114, 0.022649407, 5.9852157)
 
 [node name="wall_2x3_033" parent="Level/Walls/wall_2x3_012/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013/wall_2x3_013" instance=ExtResource("2_jv26f")]
-transform = Transform3D(1.3113421e-07, 0, 1.0000006, 0, 1, 0, -1.0000006, 0, 1.3113421e-07, -1.2852108, -0.04432106, 6.68361)
+transform = Transform3D(9.437239e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, 9.437239e-08, -1.2206637, 0.05224657, 6.724452)
 
 [node name="Monster" type="Node" parent="."]
 
@@ -461,10 +508,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_vvknj")
 }
 
+[node name="Wall Raise" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pmbdk")
+}
+
 [connection signal="MonsterDamage" from="." to="Monster/Monster" method="_on_level_1_monster_damage"]
 [connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]
 [connection signal="timeout" from="VanishTimer" to="." method="_on_vanish_timer_timeout"]
+[connection signal="GameComplete" from="Level/Torch" to="." method="_on_torch_game_complete"]
 [connection signal="timeout" from="Level/Torch/Timer" to="Level/Torch" method="_on_timer_timeout"]
 [connection signal="HolyLight" from="Player" to="." method="_on_player_holy_light"]
 [connection signal="HolyLight" from="Player" to="Monster/Monster" method="_on_player_holy_light"]
 [connection signal="timeout" from="Audio/Random Noises/Timer" to="Audio/Random Noises" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Wall Raise" to="." method="_on_wall_raise_animation_finished"]

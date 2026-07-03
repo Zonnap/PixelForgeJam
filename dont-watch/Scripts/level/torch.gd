@@ -15,6 +15,9 @@ extends Node
 var TorchHolder: Array = []
 var TorchCounter: int = 0
 
+#Signal Processing
+signal GameComplete()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TorchHolder = [Torch1, Torch2, Torch3, Torch4, Torch5, Torch6]
@@ -31,8 +34,10 @@ func _on_timer_timeout() -> void:
 		TorchCounter += 1
 		Audio.volume_db += 3
 		start_random_timer()
-	if TorchCounter > TorchHolder.size():
-		print("Game Complete")
+	if TorchCounter >= TorchHolder.size():
+		print(TorchCounter)
+		print("Signal Emitted")
+		emit_signal("GameComplete")
 	
 func start_random_timer() -> void:
 	
