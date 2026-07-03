@@ -24,13 +24,13 @@
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_tlcug"]
+[sub_resource type="Sky" id="Sky_7hll7"]
 sky_material = SubResource("ProceduralSkyMaterial_seteq")
 
 [sub_resource type="Environment" id="Environment_4dpyx"]
 background_mode = 2
 background_energy_multiplier = 0.0
-sky = SubResource("Sky_tlcug")
+sky = SubResource("Sky_7hll7")
 tonemap_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_7hll7"]
@@ -46,14 +46,14 @@ albedo_texture = ExtResource("5_k2mw1")
 offsets = PackedFloat32Array(0, 0.8233333)
 colors = PackedColorArray(0, 0, 0, 1, 0.946837, 0.58195835, 0.48082477, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_31phq"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fayjm"]
 gradient = SubResource("Gradient_irw6p")
 
 [sub_resource type="Curve" id="Curve_7hll7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.39263803, 0.99204415), 0.0, 0.0, 0, 0, Vector2(0.9325153, 0.0930233), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_fayjm"]
+[sub_resource type="CurveTexture" id="CurveTexture_nojx8"]
 curve = SubResource("Curve_7hll7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nojx8"]
@@ -66,9 +66,9 @@ initial_velocity_max = 2.0
 angular_velocity_min = -180.00002
 angular_velocity_max = 179.99998
 gravity = Vector3(0, 2, 0)
-scale_curve = SubResource("CurveTexture_fayjm")
+scale_curve = SubResource("CurveTexture_nojx8")
 color = Color(0.9372549, 0.32941177, 0.12156863, 1)
-color_ramp = SubResource("GradientTexture1D_31phq")
+color_ramp = SubResource("GradientTexture1D_fayjm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvknj"]
 transparency = 1
@@ -255,6 +255,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110497475, 0, -11.901643)
 
 [node name="Torch" type="Node" parent="Level"]
 script = ExtResource("4_fayjm")
+wait_time = 2.0
 
 [node name="000Torch" type="MeshInstance3D" parent="Level/Torch"]
 transform = Transform3D(-0.1, 0, 6.278333e-08, 0, 0.1, 0, -6.278333e-08, 0, -0.1, 1.1186185, 2.0802245, -14.604873)

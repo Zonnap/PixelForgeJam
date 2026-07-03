@@ -64,14 +64,14 @@ func reverse_current_animation() -> void:
 	anim_player.speed_scale = -1
 
 func _on_torch_game_complete() -> void:
-	GameComplete = true
+	GameComplete = true # Unused maybe?
+	get_tree().change_scene_to_file.call_deferred("res://Scenes/Levels/Win.tscn")
 
 func PlayComplete():
 	anim_player_complete.play("Wall Lift")
 
 func _on_wall_raise_animation_finished(anim_name: StringName) -> void:
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/Levels/Win.tscn")
-
 
 func _on_torch_torch_depletion(TorchGone: Variant) -> void:
 	HuntIntensity = TorchGone / 3
