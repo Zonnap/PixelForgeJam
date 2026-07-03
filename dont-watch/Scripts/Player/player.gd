@@ -30,7 +30,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("light"):
 		HolySound.play()
-	if Input.is_action_pressed("light"):
+	if Input.is_action_pressed("light") and current_fuel > 0 :
 		BookHand.visible = true
 		CastingHand.visible = true
 		BookOnly.visible = false

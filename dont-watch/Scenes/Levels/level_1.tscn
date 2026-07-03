@@ -146,7 +146,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-8.052586, 0, -7.6616144), Vector3(-0.5323796, 0, -7.6616144), Vector3(-0.0063476563, 0, -3.8929622)]
+"values": [Vector3(-8.052586, 0, -7.6616144), Vector3(-0.5323796, 0, -7.6616144), Vector3(-0.006, 0, -2.173)]
 }
 
 [sub_resource type="Animation" id="Animation_fayjm"]
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(8.160175, 0, -7.6616144), Vector3(0.56227016, 0, -7.6616144), Vector3(0.07273698, 0, -3.6571255)]
+"values": [Vector3(8.160175, 0, -7.6616144), Vector3(0.56227016, 0, -7.6616144), Vector3(0.073, 0, -2.172)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vvknj"]
@@ -475,7 +475,7 @@ transform = Transform3D(9.437239e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, 9.437239e-0
 [node name="Monster" type="Node" parent="."]
 
 [node name="Monster" parent="Monster" instance=ExtResource("11_31phq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.052586, 0, -7.6616144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.398762)
 
 [node name="Player" parent="." instance=ExtResource("13_7hll7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05496323, 0.9097966, -1.6679485)
