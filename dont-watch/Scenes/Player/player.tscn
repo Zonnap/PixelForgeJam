@@ -89,7 +89,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.004254997, -0.012682557
 stream = ExtResource("5_htcer")
 volume_db = 10.0
 max_distance = 55.65
-panning_strength = 2.1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_iixi8")

@@ -52,6 +52,5 @@ func _process(delta: float) -> void:
 	if current_fuel <= 0:
 		current_fuel = 0
 	
-
 func _on_area_3d_area_entered(_area: Area3D) -> void:
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/Monster/JumpScare.tscn")
