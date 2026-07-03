@@ -74,6 +74,6 @@ func _on_wall_raise_animation_finished(anim_name: StringName) -> void:
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/Levels/Win.tscn")
 
 func _on_torch_torch_depletion(TorchGone: Variant) -> void:
-	HuntIntensity = TorchGone / 3
+	HuntIntensity = TorchGone / 2.5
 	if HuntIntensity < 1:
 		HuntIntensity = 1

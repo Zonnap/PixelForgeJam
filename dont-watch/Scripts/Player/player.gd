@@ -2,7 +2,7 @@ extends Node3D
 
 var max_fuel := 100.0
 var current_fuel := 100.0
-var fuel_loss_rate := 4.0
+var fuel_loss_rate := 20.0 #4.0
 
 @export var lantern_energy_max := 1.0
 @export var lantern_energy_min := 0.0

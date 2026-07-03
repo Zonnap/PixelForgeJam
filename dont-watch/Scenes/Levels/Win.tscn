@@ -1,12 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbn4pgt14n4h8"]
+[gd_scene load_steps=21 format=3 uid="uid://cbn4pgt14n4h8"]
 
 [ext_resource type="PackedScene" uid="uid://bqrc82rlke385" path="res://Assets/Dungeon Assets/Modular Dungeon/Floor/Stone/Dark/floor_stone_dark_01.gltf" id="1_ebl1o"]
+[ext_resource type="Script" uid="uid://c1ifik3ukhjf6" path="res://Scripts/level/win.gd" id="1_y3r8o"]
 [ext_resource type="PackedScene" uid="uid://drk7qkqhtv63o" path="res://Assets/Dungeon Assets/Modular Dungeon/Floor/Grate/floor_grate_01.gltf" id="2_y3r8o"]
 [ext_resource type="PackedScene" uid="uid://bvdw8n0ot1fwb" path="res://Assets/Dungeon Assets/rocks/Rock.tscn" id="6_3sod7"]
 [ext_resource type="AudioStream" uid="uid://cr6pc3wbe832w" path="res://Assets/Sound/block sound.mp3" id="7_aud7y"]
 [ext_resource type="PackedScene" uid="uid://okqkdrp5m4ic" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_01.gltf" id="8_4rusn"]
 [ext_resource type="AudioStream" uid="uid://in4jju1w6wqu" path="res://Assets/Sound/take my hand lad.mp3" id="8_xgd0o"]
 [ext_resource type="PackedScene" uid="uid://b1gve1ocaprid" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_03.gltf" id="9_fmln6"]
+[ext_resource type="Shader" uid="uid://blm6sxjbvt02q" path="res://Shaders/mi_shader_ps1.gdshader" id="9_k65ly"]
+[ext_resource type="Texture2D" uid="uid://q2t7gpybnw6b" path="res://Assets/UI Assets/Overlay.png" id="10_ebl1o"]
 [ext_resource type="PackedScene" uid="uid://bmwkjdptnx0js" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_02.gltf" id="10_jgc2q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oj80o"]
@@ -27,6 +30,23 @@ tonemap_mode = 2
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_buuk6"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebl1o"]
+shader = ExtResource("9_k65ly")
+shader_parameter/use_dithering = true
+shader_parameter/dithering_intensity = 0.3
+shader_parameter/use_scanlines = true
+shader_parameter/scanlines_opacity = 0.44
+shader_parameter/use_chromatic_aberration = false
+shader_parameter/aberration_amount = 0.0
+shader_parameter/use_vhs_noise = false
+shader_parameter/noise_intensity = 0.0
+shader_parameter/use_color_quantization = true
+shader_parameter/color_levels = 0.6
+shader_parameter/use_pixelate = true
+shader_parameter/pixel_size = 0.29
+shader_parameter/use_crt = true
+shader_parameter/crt_amount = 0.3
 
 [sub_resource type="Animation" id="Animation_3sod7"]
 resource_name = "End_anim"
@@ -144,6 +164,7 @@ _data = {
 }
 
 [node name="Win" type="Node3D"]
+script = ExtResource("1_y3r8o")
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -333,6 +354,14 @@ transform = Transform3D(-0.09158312, -0.47619623, -0.37396243, -0.20791137, 0.37
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 1.1267911, 1.3135605)
 
+[node name="ColorRect" type="ColorRect" parent="Camera3D"]
+material = SubResource("ShaderMaterial_ebl1o")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_aud7y")
@@ -340,3 +369,27 @@ libraries = {
 autoplay = "End_anim"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Overlay" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("10_ebl1o")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 800.0
+offset_right = 1000.0
+offset_bottom = 850.0
+text = "Replay?"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

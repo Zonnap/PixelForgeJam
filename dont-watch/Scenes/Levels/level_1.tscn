@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://qwucpsrh2xyb" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 3.wav" id="17_nojx8"]
 [ext_resource type="AudioStream" uid="uid://casntk48bja2p" path="res://Assets/Sound/External Sounds/freesound_community-creepy-vocal-ambience-6074.mp3" id="18_7hll7"]
 [ext_resource type="AudioStream" uid="uid://3njgypsxm2dv" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 4.wav" id="18_vvknj"]
-[ext_resource type="Script" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
+[ext_resource type="Script" uid="uid://m73qa0clbmdb" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_seteq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -128,7 +128,7 @@ tracks/0/path = NodePath("Monster/Monster:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 9.986668),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -16.398762), Vector3(0, 0, -0.66)]
@@ -255,7 +255,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110497475, 0, -11.901643)
 
 [node name="Torch" type="Node" parent="Level"]
 script = ExtResource("4_fayjm")
-wait_time = 2.0
 
 [node name="000Torch" type="MeshInstance3D" parent="Level/Torch"]
 transform = Transform3D(-0.1, 0, 6.278333e-08, 0, 0.1, 0, -6.278333e-08, 0, -0.1, 1.1186185, 2.0802245, -14.604873)
@@ -368,10 +367,6 @@ omni_range = 1.466
 [node name="Timer" type="Timer" parent="Level/Torch"]
 autostart = true
 
-[node name="Heartbeat" type="AudioStreamPlayer3D" parent="Level/Torch"]
-stream = ExtResource("8_31phq")
-max_db = 6.0
-
 [node name="Walls" type="Node" parent="Level"]
 
 [node name="wall_2x3_012" parent="Level/Walls" instance=ExtResource("1_5f3p6")]
@@ -478,22 +473,28 @@ transform = Transform3D(9.437239e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, 9.437239e-0
 [node name="Monster" parent="Monster" instance=ExtResource("11_31phq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.398762)
 
+[node name="Heartbeat" type="AudioStreamPlayer3D" parent="Monster/Monster"]
+stream = ExtResource("8_31phq")
+max_db = 6.0
+max_distance = 6.0
+
 [node name="Player" parent="." instance=ExtResource("13_7hll7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05496323, 0.9097966, -1.6679485)
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="Ambient" type="AudioStreamPlayer3D" parent="Audio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.743914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2532693, -1.5964098)
 stream = ExtResource("10_u5ghp")
 volume_db = 18.543
 max_db = 4.165
 autoplay = true
+max_distance = 10.0
 
 [node name="Random Noises" type="AudioStreamPlayer3D" parent="Audio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2890935, -3.5054312)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2890935, -1.5873859)
 stream = SubResource("AudioStreamRandomizer_ad63i")
-max_distance = 0.65
+max_distance = 10.0
 panning_strength = 2.0
 script = ExtResource("19_7hll7")
 
@@ -531,6 +532,7 @@ libraries = {
 }
 
 [connection signal="MonsterDamage" from="." to="Monster/Monster" method="_on_level_1_monster_damage"]
+[connection signal="MonsterDamage" from="." to="Player/Camera3D" method="_on_level_1_monster_damage"]
 [connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]
 [connection signal="timeout" from="VanishTimer" to="." method="_on_vanish_timer_timeout"]
 [connection signal="GameComplete" from="Level/Torch" to="." method="_on_torch_game_complete"]
@@ -540,3 +542,5 @@ libraries = {
 [connection signal="HolyLight" from="Player" to="Monster/Monster" method="_on_player_holy_light"]
 [connection signal="timeout" from="Audio/Random Noises/Timer" to="Audio/Random Noises" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Wall Raise" to="." method="_on_wall_raise_animation_finished"]
+
+[editable path="Player"]
