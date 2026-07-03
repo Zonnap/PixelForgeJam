@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cvbj8ys5oxcsf"]
+[gd_scene load_steps=42 format=3 uid="uid://cvbj8ys5oxcsf"]
 
 [ext_resource type="PackedScene" uid="uid://okqkdrp5m4ic" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_01.gltf" id="1_5f3p6"]
 [ext_resource type="Script" uid="uid://bvh36lscptwyu" path="res://Scripts/level/level_1.gd" id="1_31phq"]
@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://qwucpsrh2xyb" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 3.wav" id="17_nojx8"]
 [ext_resource type="AudioStream" uid="uid://casntk48bja2p" path="res://Assets/Sound/External Sounds/freesound_community-creepy-vocal-ambience-6074.mp3" id="18_7hll7"]
 [ext_resource type="AudioStream" uid="uid://3njgypsxm2dv" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 4.wav" id="18_vvknj"]
-[ext_resource type="Script" uid="uid://m73qa0clbmdb" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
+[ext_resource type="Script" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_seteq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -94,6 +94,30 @@ stream_0/stream = ExtResource("15_7hll7")
 stream_1/stream = ExtResource("17_nojx8")
 stream_2/stream = ExtResource("18_vvknj")
 stream_3/stream = ExtResource("18_7hll7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hll7"]
+bg_color = Color(0.103743516, 0.10374353, 0.103743516, 0.69803923)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(0, 4.31)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fayjm"]
+bg_color = Color(0.7411765, 0.57254905, 0, 0.5803922)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.5930502, 0.7228533, 0.7901672, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+shadow_offset = Vector2(0, 4.31)
 
 [sub_resource type="Animation" id="Animation_7hll7"]
 length = 10.0
@@ -483,14 +507,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -81.75
-offset_top = -135.0
-offset_right = 81.75
-offset_bottom = -61.0
+offset_left = -101.0
+offset_top = -78.0
+offset_right = 101.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 51
+theme_override_font_sizes/font_size = 29
+theme_override_styles/background = SubResource("StyleBoxFlat_7hll7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fayjm")
 value = 100.0
+show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
