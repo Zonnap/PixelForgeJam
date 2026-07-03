@@ -3,45 +3,53 @@ extends Node3D
 @onready var hunt_timer: Timer = $HuntTimer
 @onready var vanish_timer: Timer = $VanishTimer
 @onready var monster: Node3D = $Monster/Monster
-
-@onready var pos_point_back: Marker3D = $Monster/PosPointBack
-@onready var pos_point_center: Marker3D = $Monster/PosPointCenter
-@onready var pos_point_left: Marker3D = $Monster/PosPointLeft
-@onready var pos_point_right: Marker3D = $Monster/PosPointRight
-@onready var pos_point_front: Marker3D = $Monster/PosPointFront
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 var min_hunt_interval = 3.0
 var max_hunt_interval = 6.0
-
-var pos_points: Array [Marker3D] = []
+var hunt_triggered = false
 
 #Signal Processing
 signal MonsterDamage()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pos_points = [pos_point_back, pos_point_center, pos_point_left, pos_point_right]
+	GameManager.monster_retreating = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if GameManager.Lantern_light_off == true:
-		if hunt_timer.is_stopped():
+		if not hunt_triggered:
 			hunt_timer.start(randf_range(min_hunt_interval, max_hunt_interval))
+			hunt_triggered = true
 		vanish_timer.stop()
 	else:
 		hunt_timer.stop()
+		hunt_triggered = false
 		if vanish_timer.is_stopped():
 			vanish_timer.start()
-		
+	
 func _on_hunt_timer_timeout() -> void:
-	var pos_select = pos_points.pick_random().global_position
-	monster.visible = true
-	monster.global_position = pos_select
+	GameManager.monster_retreating = false
+	play_random_animation()
+	print(anim_player.current_animation)
 
 func _on_vanish_timer_timeout() -> void:
-	monster.visible = false
-
-
+	GameManager.monster_retreating = true
+	reverse_current_animation()
+	
 func _on_player_holy_light() -> void:
-	if monster.visible == true:
+	if GameManager.monster_retreating == false:
 		emit_signal("MonsterDamage")
+
+func play_random_animation() -> void:
+	var anim_list: PackedStringArray = anim_player.get_animation_list()
+	if anim_list.is_empty():
+		return
+	var random_anim: String = anim_list[randi() % anim_list.size()]
+	anim_player.play(random_anim)
+
+func reverse_current_animation() -> void:
+	if anim_player.current_animation == null:
+		return
+	anim_player.play_backwards(anim_player.current_animation)

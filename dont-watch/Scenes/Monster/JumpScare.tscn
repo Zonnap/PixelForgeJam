@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://chvfhtrtnjkgf"]
+
+[ext_resource type="Texture2D" uid="uid://caob2u0sr43r" path="res://Assets/Monster Assets/scarymobs/cosmic_horror_dude_damaged.png" id="1_r2c13"]
+
+[sub_resource type="Animation" id="Animation_r2c13"]
+resource_name = "JumpScare"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.32820597, 0), Vector3(0, -0.32820597, 2.646546)]
+}
+
+[sub_resource type="Animation" id="Animation_2x1en"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.32820597, 2.2683923)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2x1en"]
+_data = {
+&"JumpScare": SubResource("Animation_r2c13"),
+&"RESET": SubResource("Animation_2x1en")
+}
+
+[node name="JumpScare" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32820597, 2.2683923)
+texture = ExtResource("1_r2c13")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7372136)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -62.5
+offset_right = 375.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 91
+text = "Boo spoooooky!!!"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2x1en")
+}
+autoplay = "JumpScare"

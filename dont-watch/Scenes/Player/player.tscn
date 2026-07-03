@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cumnbsd5esoc8"]
+[gd_scene load_steps=16 format=3 uid="uid://cumnbsd5esoc8"]
 
 [ext_resource type="Script" uid="uid://bsf2l8gmug1dy" path="res://Scripts/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://hr0uehw6jq8v" path="res://Assets/Player Assets/Book Arm.png" id="2_mtuoh"]
@@ -51,6 +51,9 @@ shader_parameter/pixel_size = 0.29
 shader_parameter/use_crt = true
 shader_parameter/crt_amount = 0.3
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dd0ac"]
+radius = 0.29541016
+
 [node name="Player" type="Node3D" node_paths=PackedStringArray("lantern")]
 script = ExtResource("1_a3d8c")
 lantern = NodePath("Camera3D/LanternLight")
@@ -95,3 +98,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1835606, 0)
+shape = SubResource("CylinderShape3D_dd0ac")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
