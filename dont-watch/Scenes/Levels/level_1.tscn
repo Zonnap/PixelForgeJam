@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://qwucpsrh2xyb" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 3.wav" id="17_nojx8"]
 [ext_resource type="AudioStream" uid="uid://casntk48bja2p" path="res://Assets/Sound/External Sounds/freesound_community-creepy-vocal-ambience-6074.mp3" id="18_7hll7"]
 [ext_resource type="AudioStream" uid="uid://3njgypsxm2dv" path="res://Assets/Sound/pack itchio PSX/sfx/Creepy Events Sounds/EVENT SOUNDS 4.wav" id="18_vvknj"]
-[ext_resource type="Script" uid="uid://m73qa0clbmdb" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
+[ext_resource type="Script" path="res://Scripts/level/random_noises.gd" id="19_7hll7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_seteq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

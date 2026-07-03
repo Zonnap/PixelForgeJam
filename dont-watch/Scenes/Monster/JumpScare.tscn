@@ -1,20 +1,158 @@
-[gd_scene load_steps=5 format=3 uid="uid://chvfhtrtnjkgf"]
+[gd_scene load_steps=13 format=3 uid="uid://chvfhtrtnjkgf"]
 
-[ext_resource type="Texture2D" uid="uid://caob2u0sr43r" path="res://Assets/Monster Assets/scarymobs/cosmic_horror_dude_damaged.png" id="1_r2c13"]
+[ext_resource type="Shader" uid="uid://blm6sxjbvt02q" path="res://Shaders/mi_shader_ps1.gdshader" id="1_hk2o3"]
+[ext_resource type="Script" uid="uid://b84cx6j52vsx8" path="res://Scripts/UI/jump_scare/jump_scare.gd" id="1_ovkwr"]
+[ext_resource type="Texture2D" uid="uid://nxfx378iy1kd" path="res://Assets/Monster Assets/scarymobs/Monster Texture.png" id="1_r2c13"]
+[ext_resource type="Texture2D" uid="uid://q2t7gpybnw6b" path="res://Assets/UI Assets/Overlay.png" id="3_n4ua5"]
+[ext_resource type="AudioStream" uid="uid://bvutxppxsqxm4" path="res://Assets/Sound/JumpScare.mp3" id="3_ovkwr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r2c13"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+energy_multiplier = 0.0
+
+[sub_resource type="Sky" id="Sky_2x1en"]
+sky_material = SubResource("ProceduralSkyMaterial_r2c13")
+
+[sub_resource type="Environment" id="Environment_hk2o3"]
+background_mode = 2
+sky = SubResource("Sky_2x1en")
+tonemap_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovkwr"]
+shader = ExtResource("1_hk2o3")
+shader_parameter/use_dithering = true
+shader_parameter/dithering_intensity = 1.0
+shader_parameter/use_scanlines = true
+shader_parameter/scanlines_opacity = 1.0
+shader_parameter/use_chromatic_aberration = true
+shader_parameter/aberration_amount = 0.0
+shader_parameter/use_vhs_noise = true
+shader_parameter/noise_intensity = 0.0
+shader_parameter/use_color_quantization = true
+shader_parameter/color_levels = 0.08400000399
+shader_parameter/use_pixelate = true
+shader_parameter/pixel_size = 0.3
+shader_parameter/use_crt = true
+shader_parameter/crt_amount = 0.3
 
 [sub_resource type="Animation" id="Animation_r2c13"]
 resource_name = "JumpScare"
+length = 44.0955
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/path = NodePath("Camera3D/ColorRect:material:shader_parameter/color_levels")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1005234, 0.23333333, 0.3, 0.36666667, 0.46666667, 0.56666666, 0.6666667, 0.76666665, 0.93333334, 1.1, 1.3, 1.6, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, -0.32820597, 0), Vector3(0, -0.32820597, 2.646546)]
+"values": [0.0, 0.08400000399, 0.0, 0.08400000399, 0.0, 0.08400000399, 0.0, 0.08400000399, 0.0, 0.08400000399, 0.0, 0.08400000399, 0.0, 0.08400000399]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.045226473,
+"stream": ExtResource("3_ovkwr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Monster:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -6.8011985, 0, 0, 0),
+"times": PackedFloat32Array(3.2883096, 16.333334)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Monster:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -6.8011985, 0, 0, 0),
+"times": PackedFloat32Array(3.2883096, 16.333334)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Monster:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -6.8011985, 0, 0, 0),
+"times": PackedFloat32Array(3.2883096, 16.333334)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Monster:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -6.8011985, 0.16666667, 0, 0),
+"times": PackedFloat32Array(3.2883096, 16.333334)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Button:modulate:r")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.26306474, 0, 0, 0),
+"times": PackedFloat32Array(1.3153238, 2.8937123)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Button:modulate:g")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.26306474, 0, 0, 0),
+"times": PackedFloat32Array(1.3153238, 2.8937123)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Button:modulate:b")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.26306474, 0, 0, 0),
+"times": PackedFloat32Array(1.3153238, 2.8937123)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Button:modulate:a")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.26306474, -0.16666667, 0, 0),
+"times": PackedFloat32Array(1.3153238, 2.8937123)
 }
 
 [sub_resource type="Animation" id="Animation_2x1en"]
@@ -22,14 +160,102 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/path = NodePath("Camera3D/ColorRect:material:shader_parameter/color_levels")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.32820597, 2.2683923)]
+"values": [0.08400000399]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Monster:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Monster:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Monster:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Monster:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button:modulate:r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Button:modulate:g")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Button:modulate:b")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Button:modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2x1en"]
@@ -39,34 +265,88 @@ _data = {
 }
 
 [node name="JumpScare" type="Node3D"]
+script = ExtResource("1_ovkwr")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32820597, 2.2683923)
-texture = ExtResource("1_r2c13")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7372136)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -375.0
-offset_top = -62.5
-offset_right = 375.0
-offset_bottom = 62.5
+offset_left = -782.0
+offset_top = -64.0
+offset_right = -337.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 91
-text = "Boo spoooooky!!!"
-horizontal_alignment = 1
+mouse_filter = 1
+theme_override_font_sizes/font_size = 86
+text = "RESTART"
+text_overrun_behavior = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Monster" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.6464285
+anchor_bottom = 0.6417989
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.875, 0.875)
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = ExtResource("1_r2c13")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hk2o3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7372136)
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D"]
+material = SubResource("ShaderMaterial_ovkwr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2x1en")
 }
 autoplay = "JumpScare"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AnimationPlayer"]
+
+[node name="Overlay" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_n4ua5")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
