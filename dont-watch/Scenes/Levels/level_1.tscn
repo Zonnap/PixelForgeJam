@@ -192,7 +192,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7hll7"]
-size = Vector3(1.7562828, 3.7658691, 16.40686)
+size = Vector3(1.7562828, 3.7658691, 11.685501)
 
 [node name="Level_1" type="Node3D"]
 script = ExtResource("1_31phq")
@@ -473,7 +473,7 @@ transform = Transform3D(9.437239e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, 9.437239e-0
 [node name="Monster" type="Node" parent="." groups=["Monster"]]
 
 [node name="Monster" parent="Monster" groups=["Monster"] instance=ExtResource("11_31phq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0, -0.66)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.09041)
 
 [node name="Heartbeat" type="AudioStreamPlayer3D" parent="Monster/Monster"]
 stream = ExtResource("8_31phq")
@@ -542,7 +542,7 @@ libraries = {
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052789688, 1.528436, -9.441462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052789688, 1.528436, -7.080782)
 shape = SubResource("BoxShape3D_7hll7")
 
 [connection signal="MonsterDamage" from="." to="Monster/Monster" method="_on_level_1_monster_damage"]
