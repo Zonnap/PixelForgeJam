@@ -29,6 +29,5 @@ func apply_shake():
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength,shake_strength),rng.randf_range(-shake_strength,shake_strength))
 
-
 func _on_level_1_monster_damage() -> void:
 	MonsterDamaged = true

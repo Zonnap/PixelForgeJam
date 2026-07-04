@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkjgd2he833bw"]
+[gd_scene load_steps=11 format=3 uid="uid://dkjgd2he833bw"]
 
 [ext_resource type="Script" uid="uid://b8xy6uygixms5" path="res://Scripts/Monster/monster.gd" id="1_s58ey"]
 [ext_resource type="Texture2D" uid="uid://dm8tj3ychiar4" path="res://Assets/Monster Assets/scarymobs/cosmic_horror_dude.png" id="2_67fv7"]
@@ -108,7 +108,10 @@ _data = {
 height = 2.1611328
 radius = 0.77685547
 
-[node name="Monster" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vd1hn"]
+size = Vector3(1, 2.3886719, 0.1694336)
+
+[node name="Monster" type="CharacterBody3D"]
 script = ExtResource("1_s58ey")
 
 [node name="SpriteCenter" type="Sprite3D" parent="."]
@@ -146,5 +149,9 @@ wait_time = 3.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.264127, 0)
 shape = SubResource("CylinderShape3D_vd1hn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1440754, 0.033935547)
+shape = SubResource("BoxShape3D_vd1hn")
 
 [connection signal="timeout" from="Scream/Timer" to="." method="_on_timer_timeout"]

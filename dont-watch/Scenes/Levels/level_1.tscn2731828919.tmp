@@ -146,7 +146,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-8.052586, 0, -7.6616144), Vector3(-0.5323796, 0, -7.6616144), Vector3(-0.006, 0, -0.66)]
+"values": [Vector3(-8.052586, 0, -7.6616144), Vector3(-0.5323796, 0, -7.6616144), Vector3(-0.006, 0, -2.173)]
 }
 
 [sub_resource type="Animation" id="Animation_fayjm"]
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(8.160175, 0, -7.6616144), Vector3(0.56227016, 0, -7.6616144), Vector3(0.073, 0, -0.66)]
+"values": [Vector3(8.160175, 0, -7.6616144), Vector3(0.56227016, 0, -7.6616144), Vector3(0.073, 0, -2.172)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vvknj"]
@@ -192,7 +192,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7hll7"]
-size = Vector3(1.7562828, 3.7658691, 16.40686)
+size = Vector3(4.284897, 3.7658691, 16.40686)
 
 [node name="Level_1" type="Node3D"]
 script = ExtResource("1_31phq")
@@ -473,7 +473,7 @@ transform = Transform3D(9.437239e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, 9.437239e-0
 [node name="Monster" type="Node" parent="." groups=["Monster"]]
 
 [node name="Monster" parent="Monster" groups=["Monster"] instance=ExtResource("11_31phq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0, -0.66)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.398762)
 
 [node name="Heartbeat" type="AudioStreamPlayer3D" parent="Monster/Monster"]
 stream = ExtResource("8_31phq")
@@ -484,7 +484,6 @@ max_distance = 6.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05496323, 0.9097966, -1.6679485)
 
 [node name="Area3D" parent="Player" index="2" groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.005473733)
 
 [node name="CollisionShape3D" parent="Player/Area3D" index="0" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56124604, 0)
@@ -542,7 +541,7 @@ libraries = {
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052789688, 1.528436, -9.441462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1969986, 1.528436, -9.441462)
 shape = SubResource("BoxShape3D_7hll7")
 
 [connection signal="MonsterDamage" from="." to="Monster/Monster" method="_on_level_1_monster_damage"]
@@ -559,5 +558,4 @@ shape = SubResource("BoxShape3D_7hll7")
 [connection signal="animation_finished" from="Wall Raise" to="." method="_on_wall_raise_animation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
-[editable path="Monster/Monster"]
 [editable path="Player"]

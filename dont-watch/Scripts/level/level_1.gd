@@ -5,12 +5,15 @@ extends Node3D
 @onready var monster: Node3D = $Monster/Monster
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var anim_player_complete: AnimationPlayer = $"Wall Raise"
+@onready var MonsterInPath = $Area3D
 
 var min_hunt_interval = 3.0
 var max_hunt_interval = 10.0
 var hunt_triggered = false
 var GameComplete = false
 var HuntIntensity = 1
+var HolyLightPlayer = false
+var MonsterEnteredArena = false
 
 #Signal Processing
 signal MonsterDamage()
@@ -20,14 +23,20 @@ func _ready() -> void:
 	GameManager.monster_retreating = false
 	hunt_timer.start(randf_range(min_hunt_interval, max_hunt_interval))
 	hunt_triggered = true
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if GameManager.Lantern_light_off == false and GameComplete == false:
-		hunt_timer.stop()
-		hunt_triggered = false
+	if GameManager.monster_retreating == false and MonsterEnteredArena == true and HolyLightPlayer == true:
+		emit_signal("MonsterDamage")
 		if vanish_timer.is_stopped():
 			vanish_timer.start()
-	elif GameComplete == true:
+	elif HolyLightPlayer == true and MonsterEnteredArena == false:
+		HolyLightPlayer = false
+	if GameManager.monster_retreating == true:
+		hunt_triggered = false
+		MonsterEnteredArena = false
+		HolyLightPlayer = false
+	if GameComplete == true:
 		hunt_timer.stop()
 		vanish_timer.stop()
 		PlayComplete()
@@ -46,10 +55,6 @@ func _on_vanish_timer_timeout() -> void:
 			hunt_timer.start(randf_range(min_hunt_interval, max_hunt_interval))
 			hunt_triggered = true
 		vanish_timer.stop()
-	
-func _on_player_holy_light() -> void:
-	if GameManager.monster_retreating == false:
-		emit_signal("MonsterDamage")
 
 func play_random_animation() -> void:
 	var anim_list: PackedStringArray = anim_player.get_animation_list()
@@ -62,6 +67,14 @@ func reverse_current_animation() -> void:
 	if anim_player.current_animation == null:
 		return
 	anim_player.speed_scale = -1
+	
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Monster"):
+		MonsterEnteredArena = true
+
+func _on_player_holy_light() -> void:
+	print("I got the magic baby")
+	HolyLightPlayer = true
 
 func _on_torch_game_complete() -> void:
 	GameComplete = true # Unused maybe?

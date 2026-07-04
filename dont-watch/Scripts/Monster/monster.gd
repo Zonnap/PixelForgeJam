@@ -5,9 +5,11 @@ extends Node3D
 @onready var area_3d: Area3D = $Area3D
 @onready var collision_shape_3d: CollisionShape3D = $Area3D/CollisionShape3D
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
 	DamagedMob.visible = false
 	NormalMob.visible = true
+
+func _process(_delta: float) -> void:
 	if GameManager.Lantern_light_off == false:
 		area_3d.set_deferred("monitoring", true)
 	elif GameManager.Lantern_light_off == true:
@@ -15,6 +17,8 @@ func _process(_delta: float) -> void:
 		
 func _on_timer_timeout() -> void:
 	$Scream.stop()
+	DamagedMob.visible = false
+	NormalMob.visible = true
 
 func _on_level_1_monster_damage() -> void:
 	NormalMob.visible = false
