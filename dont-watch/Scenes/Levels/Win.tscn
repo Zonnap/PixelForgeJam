@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cbn4pgt14n4h8"]
+[gd_scene load_steps=22 format=3 uid="uid://cbn4pgt14n4h8"]
 
 [ext_resource type="PackedScene" uid="uid://bqrc82rlke385" path="res://Assets/Dungeon Assets/Modular Dungeon/Floor/Stone/Dark/floor_stone_dark_01.gltf" id="1_ebl1o"]
 [ext_resource type="Script" uid="uid://c1ifik3ukhjf6" path="res://Scripts/level/win.gd" id="1_y3r8o"]
@@ -11,6 +11,9 @@
 [ext_resource type="Shader" uid="uid://blm6sxjbvt02q" path="res://Shaders/mi_shader_ps1.gdshader" id="9_k65ly"]
 [ext_resource type="Texture2D" uid="uid://q2t7gpybnw6b" path="res://Assets/UI Assets/Overlay.png" id="10_ebl1o"]
 [ext_resource type="PackedScene" uid="uid://bmwkjdptnx0js" path="res://Assets/Dungeon Assets/Modular Dungeon/Wall/2x3/wall_2x3_02.gltf" id="10_jgc2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3r8o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oj80o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -37,14 +40,14 @@ shader_parameter/use_dithering = true
 shader_parameter/dithering_intensity = 0.3
 shader_parameter/use_scanlines = true
 shader_parameter/scanlines_opacity = 0.44
-shader_parameter/use_chromatic_aberration = false
-shader_parameter/aberration_amount = 0.0
+shader_parameter/use_chromatic_aberration = true
+shader_parameter/aberration_amount = 0.034000001615
 shader_parameter/use_vhs_noise = false
 shader_parameter/noise_intensity = 0.0
 shader_parameter/use_color_quantization = true
 shader_parameter/color_levels = 0.6
-shader_parameter/use_pixelate = true
-shader_parameter/pixel_size = 0.29
+shader_parameter/use_pixelate = false
+shader_parameter/pixel_size = 0.0
 shader_parameter/use_crt = true
 shader_parameter/crt_amount = 0.3
 
@@ -117,6 +120,50 @@ tracks/4/keys = {
 "times": PackedFloat32Array(6.4)
 }
 tracks/4/use_blend = true
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Replay:modulate:r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25333342, 0, 0, 0),
+"times": PackedFloat32Array(13.101999, 14.622)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Replay:modulate:g")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25333342, 0, 0, 0),
+"times": PackedFloat32Array(13.101999, 14.622)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/Replay:modulate:b")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25333342, 0, 0, 0),
+"times": PackedFloat32Array(13.101999, 14.622)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/Replay:modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25333342, -0.16666667, 0, 0),
+"times": PackedFloat32Array(13.101999, 14.622)
+}
 
 [sub_resource type="Animation" id="Animation_aud7y"]
 length = 0.001
@@ -156,6 +203,50 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 1.1267911, 1.3135605)]
 }
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Replay:modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Replay:modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Replay:modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Replay:modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aud7y"]
 _data = {
@@ -165,6 +256,34 @@ _data = {
 
 [node name="Win" type="Node3D"]
 script = ExtResource("1_y3r8o")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Replay" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.5
+offset_top = -63.0
+offset_right = 222.5
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = SubResource("StyleBoxFlat_y3r8o")
+text = "REPLAY?"
+text_overrun_behavior = 1
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -361,6 +480,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -373,33 +493,10 @@ autoplay = "End_anim"
 [node name="Overlay" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("10_ebl1o")
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Replay" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 723.0
-offset_top = 631.0
-offset_right = 1168.0
-offset_bottom = 757.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_font_sizes/font_size = 86
-text = "REPLAY?"
-text_overrun_behavior = 1
 
 [connection signal="pressed" from="Control/Replay" to="." method="_on_replay_pressed"]
